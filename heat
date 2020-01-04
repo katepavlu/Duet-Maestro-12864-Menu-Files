@@ -1,0 +1,29 @@
+image R3 C5 L"hotend.img"
+value R0 C22 W19 H0 F0 D0 N079
+;
+image R3 C40 L"heatbed.img"
+value R0 C57 W17 H0 F0 D0 N080
+;
+; "HEATER FAULT" (V20 and V28)
+;
+image R3 C5 V20 L"error.img"
+image R3 C40 V28 L"error.img"
+;
+text R1 C75 F0 T"X"
+value R1 C81 W19 H0 F0 D0 N510
+;
+text R1 C100 F0 T"Y"
+value R1 C106 W19 H0 F0 D0 N511
+;
+text R10 C75 F0 T"Z"
+value R10 C81 W33 H0 F0 D2 N512
+button R11 C112 F0 T"|^|" A"return"
+;
+image R22 C0 L"hline.img"
+;
+button R26 C5 F0 T"Preheat PLA 210/60" A"M104 S210 M140 S60|return"
+button R37 C5 F0 T"Preheat PETG 230/90" A"M104 S230 M140 S90|return"
+button R48 C5 F0 T"Preheat ABS 250/100" A"M104 S250 M140 S100|return"
+;
+alter R11 C21 W19 H0 F0 D0 N179
+alter R11 C56 W17 H0 F0 D0 N180
