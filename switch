@@ -29,7 +29,7 @@ image R39 C60 L"hourglass.img"
 value R37 C68 W54 F0 N537
 ;
 button R51 C5 F0 T"UNLOAD" A"M98 P#0" L"/menu/unload"
-button R51 C52 F0 T"LOAD" A"M98 P#0" L"/menu/unload"
+button R51 C52 F0 T"LOAD" A"M98 P#0" L"/menu/load"
 button R51 C87 F0 T"RETURN" A"return"
 ;
 ; "HEATER FAULT" (V20 and V28)
