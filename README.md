@@ -6,7 +6,7 @@ Installation:
 
 Download the complete set of files, unzip them and, using the DWC Display page, upload them to your /menu folder.
 
-Beware, any existing files with the same name will be overwritten, so best backup first.
+Beware, any existing files with the same name will be overwritten, so it would be best to make a backup.
 
 To adjust the filament loading and unloading procedure for your particular setup, edit the "load" and "unload" files, they are normal GCODE macros.
 
