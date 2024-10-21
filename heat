@@ -1,13 +1,13 @@
+;
+; "Always on" Menu (V0, default)
+;
 image R3 C5 L"hotend.img"
 value R0 C22 W19 H0 F0 D0 N079
+alter R11 C21 W19 H0 F0 D0 N179
 ;
 image R3 C40 L"heatbed.img"
 value R0 C57 W17 H0 F0 D0 N080
-;
-; "HEATER FAULT" (V20 and V28)
-;
-image R3 C5 V20 L"error.img"
-image R3 C40 V28 L"error.img"
+alter R11 C56 W17 H0 F0 D0 N180
 ;
 text R1 C75 F0 T"X"
 value R1 C81 W19 H0 F0 D0 N510
@@ -17,13 +17,39 @@ value R1 C106 W19 H0 F0 D0 N511
 ;
 text R10 C75 F0 T"Z"
 value R10 C81 W33 H0 F0 D2 N512
-button R11 C112 F0 T"|^|" A"return"
 ;
 image R22 C0 L"hline.img"
 ;
-button R26 C5 F0 T"Preheat PLA 210/60" A"M104 S210 M140 S60|return"
-button R37 C5 F0 T"Preheat PETG 230/90" A"M104 S230 M140 S90|return"
-button R48 C5 F0 T"Preheat ABS 250/100" A"M104 S250 M140 S100|return"
+; "HEATER FAULT" (V20 and V28)
 ;
-alter R11 C21 W19 H0 F0 D0 N179
-alter R11 C56 W17 H0 F0 D0 N180
+image R3 C5 V20 L"error.img"
+image R3 C40 V28 L"error.img"
+;
+button R11 C112 F0 T"|^|" A"return"
+
+;
+
+;tool heater presets;
+button R24 C5 W22 T"Off" A"G10 P0 S0"
+button R33 C5 W22 T"210" A"M104 S210"
+button R42 C5 W22 T"230" A"M104 S230"
+button R51 C5 W22 T"250" A"M104 S250"
+
+;bed heater presets
+button R24 C40 W22 T"Off" A"M140 S0"
+button R33 C40 W22 T"60" A"M140 S60"
+button R42 C40 W22 T"80" A"M140 S80"
+button R51 C40 W22 T"110" A"M140 S110"
+
+;EXTRAS
+
+
+text R24 C75 T"EXTRUDE -"
+text R33 C75 T"MIN"
+value C95 W20 H2 N{heat.coldExtrudeTemperature}
+text T" C"
+
+text R42 C75 T"RETRACT -"
+text R51 C75 T"MIN"
+value C95 W20 H2 N{heat.coldRetractTemperature}
+text T" C"

@@ -1,0 +1,6 @@
+button R0 C3 F0 T"|^|" A"return"
+button R0 C18 F0 T"RECOVER" A"M916"
+button R0 C70 F0 T"MACRO" A"menu macros"
+button R0 C110 F0 T"SD" A"menu print_ext"
+image R11 C0 L"hline.img"
+files R14 F0 N4 I"0:/gcodes" A"M32 #0|return"

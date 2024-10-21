@@ -20,8 +20,12 @@ value R10 C81 W33 H0 F0 D2 N512
 ;
 image R22 C0 L"hline.img"
 ;
-text R23 C6 F0 T"IP:"
-value R23 C22 W105 F0 H0 N534
+; "HEATER FAULT" (V20 and V28)
+;
+image R3 C5 V20 L"error.img"
+image R3 C40 V28 L"error.img"
+;
+
 ;
 image R35 C0 L"hline.img"
 ;
@@ -29,35 +33,43 @@ image R49 C0 L"hline.img"
 ;
 ; "Not printing" Menu (V5)
 ;
+text R23 C6 F0 V5 T"IP:"
+value R23 C22 W105 F0 H0 V5 N534 
+;show IP address
+
 button R51 C5 F0 V5 T"HEAT" A"menu heat"
-button R51 C35 F0 V5 T"MOVE" A"menu move"
-button R51 C66 F0 V5 T"CTRL" A"menu control"
-button R51 C96 F0 V5 T"PRINT" A"menu listFiles"
-;
-button R37 C5 F0 V5 T"LOAD" A"M98 P#0" L"/menu/load"
-button R37 C43 F0 V5 T"UNLOAD" A"M98 P#0" L"/menu/unload"
-button R37 C94 F0 V5 T"RISE Z" A"M98 P#0" L"/menu/rise"
+button R51 C48 F0 V5 T"MOVE" A"menu move"
+button R51 C96 F0 V5 T"PRINT" A"menu print"
+
+
+button R37 C5 F0 V5 T"LOAD" A"M83 G1 E10 F700 G1 E40 F500 G1 E50 F300|menu load"
+button R37 C43 F0 V5 T"UNLOAD" A"M83 G1 E-90 F2000"
+button R37 C94 F0 V5 T"RISE Z" A"G91 G0Z+150"
 ;
 ; "Actively Printing" Menu (V2)
 ;
 button R51 C5 F0 V2 T"BABYSTEP" A"menu babysteps"
 button R51 C61 V2 T"PAUSE" A"M25"
-button R51 C99 V2 T"TUNE" A"menu tune"
+button R51 C99 V2 T"MORE" A"menu more"
 ;
 ; "Printing" Menu (includes paused, pausing, resuming) (V4)
 ;
+value R23 C0 V4 W128 N{job.file.fileName}
+;text R23 C-35 V4 T"0:/gcodes/filename_0.4n_blabla.gcode" ;for testing
+
 text R37 C6 F0 V4 T"PRINT"
-value R37 C34 F0 V4 N535
+value R37 C34 V4 N535
 image R39 C60 V4 L"hourglass.img"
-value R37 C68 W54 F0 V4 N537
-;
+value R37 C68 W60 V4 N537
+;value R37 C68 V4 N{floor(job.timesLeft.slicer/3600)} H2
+;text V4 T":"
+;value V4 N{floor(job.timesLeft.slicer-3600*floor(job.timesLeft.slicer/3600))/60} W12
+;text V4 T":"
+;value V4 N{floor(job.timesLeft.slicer-60*floor(job.timesLeft.slicer/60))} W12
+;^floor((job.timesLeft.slicer-3600*floor(job.timesLeft.slicer/3600))/60)}
+
 ; "Paused" Menu (includes pausing, does not include actively printing or resuming) (V6)
 ;
 button R51 C5 F0 V6 T"RESUME" A"M24"
-button R51 C43 F0 V6 T"ABORT" A"M0"
-button R51 C80 F0 V6 T"FILAMENT" A"menu switch"
-;
-; "HEATER FAULT" (V20 and V28)
-;
-image R3 C5 V20 L"error.img"
-image R3 C40 V28 L"error.img"
+button R51 C46 F0 V6 T"ABORT" A"M0"
+button R51 C80 F0 V6 T"FILAMENT" A"menu filament"

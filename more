@@ -1,0 +1,45 @@
+;
+; "Always on" Menu (V0, default)
+;
+image R3 C5 L"hotend.img"
+value R0 C22 W19 H0 F0 D0 N079
+alter R11 C22 W19 H0 F0 D0 N179
+;
+image R3 C40 L"heatbed.img"
+value R0 C57 W17 H0 F0 D0 N080
+alter R11 C57 W17 H0 F0 D0 N180
+;
+text R1 C75 F0 T"X"
+value R1 C81 W19 H0 F0 D0 N510
+;
+text R1 C100 F0 T"Y"
+value R1 C106 W19 H0 F0 D0 N511
+;
+text R10 C75 F0 T"Z"
+value R10 C81 W33 H0 F0 D2 N512
+;
+image R22 C0 L"hline.img"
+;
+; "HEATER FAULT" (V20 and V28)
+;
+image R3 C5 V20 L"error.img"
+image R3 C40 V28 L"error.img"
+;
+button R11 C112 F0 T"|^|" A"return"
+;
+
+text R23 C6 F0 T"IP:"
+value R23 C22 W105 F0 H0 N534 
+
+text R33 C6 F0 T"FAN: "
+alter W20 F0 H2  N399
+text F0 T" %"
+;
+text R42 C6 F0 T"FLOWRATE: "
+alter W20 F0 H2  N400
+text F0 T" %"
+;
+text R51 C6 F0 T"SPEED: "
+alter W20 F0 H2  N500
+text F0 T" %"
+;
